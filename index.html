@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FoodieHub – Delicious Food, Delivered to Your Door</title>
+    <meta name="description" content="Order from the best restaurants near you with FoodieHub.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <a class="skip" href="#menu">Skip to menu</a>
+    <div id="loader" aria-hidden="true">
+        <span>🍴</span>
+    </div>
+
+    <header class="site-header">
+        <div class="wrap nav">
+
+            <a href="#home" class="logo" aria-label="FoodieHub home">
+                Foodie<b>Hub</b>
+            </a>
+
+            <nav id="mainNav" aria-label="Main">
+                <a href="#home">Home</a>
+                <a href="#restaurants">Restaurants</a>
+                <a href="#menu">Explore Foods</a>
+                <a href="#offers">Offers</a>
+                <a href="#orders">My Orders</a>
+            </nav>
+
+            <form class="nav-search" id="navSearchForm" role="search">
+                <label class="sr" for="navSearch">Search foods or restaurants</label>
+                <input id="navSearch" type="search" placeholder="Search food or restaurant">
+            </form>
+
+            <div class="actions">
+                <button class="icon-btn" data-act="wishlist" aria-label="Open wishlist">
+                    ♡<span class="badge" id="wishCount">0</span>
+                </button>
+
+                <button class="icon-btn" data-act="cart" aria-label="Open cart">
+                    🛒<span class="badge" id="cartCount">0</span>
+                </button>
+
+                <button class="icon-btn" data-act="profile" aria-label="Open profile">
+                    👤
+                </button>
+
+                <button class="icon-btn burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+                    ☰
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section id="home" class="hero">
+            <div class="wrap hero-grid">
+
+                <div class="hero-text">
+                    <span class="promo">🎉 Use WELCOME20 for 20% off your first order</span>
+
+                    <h1>Delicious Food, Delivered to Your Door.</h1>
+
+                    <p>
+                        Hot meals from kitchens you love, tracked from the stove to your doorstep.
+                        Fresh, fast and fairly priced.
+                    </p>
+
+                    <form class="hero-form" id="heroForm">
+                        <label class="sr" for="heroLoc">Delivery location</label>
+                        <input id="heroLoc" placeholder="📍 Enter delivery location" autocomplete="street-address">
+
+                        <label class="sr" for="heroSearch">Search food</label>
+                        <input id="heroSearch" type="search" placeholder="🔍 Search for biryani, pizza…">
+
+                        <button class="btn" type="submit">Explore Restaurants</button>
+                    </form>
+                </div>
+
+                <div class="hero-art" aria-hidden="true">
+                    <div class="plate">🍛</div>
+                    <span class="f f1">🍕</span>
+                    <span class="f f2">🍔</span>
+                    <span class="f f3">🥗</span>
+                    <span class="f f4">🍰</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="wrap sec">
+            <h2>What are you craving?</h2>
+            <div id="categories" class="cats"></div>
+        </section>
+
+        <section id="restaurants" class="wrap sec">
+            <h2>Popular restaurants</h2>
+            <div id="restGrid" class="grid rest-grid"></div>
+        </section>
+
+        <section id="menu" class="wrap sec">
+
+            <h2>Explore foods</h2>
+
+            <div class="filters">
+                <input id="fSearch" type="search" placeholder="Search by food or restaurant" aria-label="Search foods">
+
+                <select id="fVeg" aria-label="Diet">
+                    <option value="all">Veg & Non-Veg</option>
+                    <option value="veg">Veg only</option>
+                    <option value="non">Non-Veg only</option>
+                </select>
+
+                <select id="fPrice" aria-label="Price range">
+                    <option value="0-9999">Any price</option>
+                    <option value="0-150">Under ₹150</option>
+                    <option value="150-300">₹150 – ₹300</option>
+                    <option value="300-9999">Above ₹300</option>
+                </select>
+
+                <select id="fRating" aria-label="Minimum rating">
+                    <option value="0">Any rating</option>
+                    <option value="4">4.0+</option>
+                    <option value="4.3">4.3+</option>
+                    <option value="4.5">4.5+</option>
+                </select>
+
+                <select id="fSort" aria-label="Sort">
+                    <option value="popular">Popularity</option>
+                    <option value="rating">Rating</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                </select>
+
+                <button class="btn ghost" id="fReset" type="button">Reset</button>
+            </div>
+
+            <p id="resultInfo" class="muted" aria-live="polite"></p>
+            <div id="foodGrid" class="grid food-grid"></div>
+
+        </section>
+
+        <section id="offers" class="wrap sec">
+            <h2>Exclusive offers</h2>
+            <div id="offerGrid" class="grid offer-grid"></div>
+        </section>
+
+        <section class="wrap sec">
+
+            <h2>Why choose FoodieHub?</h2>
+
+            <div class="grid feat-grid">
+
+                <article class="feat">
+                    <span>⚡</span>
+                    <h3>Fast delivery</h3>
+                    <p>Most orders arrive in under 35 minutes.</p>
+                </article>
+
+                <article class="feat">
+                    <span>🥬</span>
+                    <h3>Fresh and hygienic</h3>
+                    <p>Partner kitchens are audited for quality.</p>
+                </article>
+
+                <article class="feat">
+                    <span>💸</span>
+                    <h3>Honest pricing</h3>
+                    <p>Taxes and fees shown before you pay.</p>
+                </article>
+
+                <article class="feat">
+                    <span>📍</span>
+                    <h3>Live status</h3>
+                    <p>Follow every order from kitchen to door.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="wrap sec">
+
+            <h2>How it works</h2>
+
+            <ol class="steps">
+                <li><b>Pick</b> a restaurant or dish you like.</li>
+                <li><b>Add</b> items to your cart and apply a coupon.</li>
+                <li><b>Pay</b> securely and confirm your address.</li>
+                <li><b>Enjoy</b> hot food at your door.</li>
+            </ol>
+
+        </section>
+
+        <section id="orders" class="wrap sec">
+            <h2>My orders</h2>
+            <div id="ordersList"></div>
+        </section>
+
+        <section class="wrap sec">
+            <h2>Customer reviews</h2>
+            <div id="reviewGrid" class="grid review-grid"></div>
+        </section>
+
+        <section class="wrap sec">
+            <h2>Frequently asked questions</h2>
+            <div id="faqList" class="faq"></div>
+        </section>
+
+        <section class="wrap sec news">
+
+            <div>
+                <h2>Get offers in your inbox</h2>
+                <p>Weekly deals, no spam.</p>
+            </div>
+
+            <form id="newsForm" novalidate>
+                <label class="sr" for="newsEmail">Email address</label>
+                <input id="newsEmail" type="email" placeholder="you@example.com">
+                <button class="btn" type="submit">Subscribe</button>
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="wrap foot-grid">
+
+            <div>
+                <a href="#home" class="logo">Foodie<b>Hub</b></a>
+                <p>Delicious Food, Delivered to Your Door.</p>
+            </div>
+
+            <div>
+                <h4>Company</h4>
+                <a href="#restaurants">Restaurants</a>
+                <a href="#offers">Offers</a>
+                <a href="#orders">My Orders</a>
+            </div>
+
+            <div>
+                <h4>Support</h4>
+                <a href="#faqList">FAQ</a>
+                <a href="mailto:help@foodiehub.demo">help@foodiehub.demo</a>
+            </div>
+
+        </div>
+
+        <p class="copy">© 2026 FoodieHub. Demo project – no real orders or payments.</p>
+
+    </footer>
+
+    <div id="overlay" hidden></div>
+
+    <aside id="drawer" class="drawer" aria-label="Shopping cart" aria-hidden="true"></aside>
+
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+
+        <div class="modal-box">
+
+            <div class="modal-head">
+                <h3 id="modalTitle"></h3>
+                <button class="icon-btn" data-act="closeModal" aria-label="Close">✕</button>
+            </div>
+
+            <div id="modalBody"></div>
+
+        </div>
+
+    </div>
+
+    <div id="toasts" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
